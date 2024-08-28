@@ -4,6 +4,7 @@
 #include "dialog.h"
 
 #include <QComboBox>
+#include <QDebug>
 #include <QGridLayout>
 #include <QLabel>
 #include <QLineEdit>
@@ -90,6 +91,7 @@ void Dialog::processTimeout()
                                "\n\r-response: %3")
                             .arg(++m_transactionCount).arg(QString::fromUtf8(m_request))
                             .arg(m_responseLineEdit->text()));
+	qDebug() << m_request;
     m_request.clear();
 }
 
