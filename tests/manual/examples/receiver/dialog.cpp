@@ -51,8 +51,8 @@ Dialog::Dialog(QWidget *parent) :
     connect(&m_serial, &QSerialPort::readyRead, this, &Dialog::readRequest);
     connect(&m_timer, &QTimer::timeout, this, &Dialog::processTimeout);
 
-    connect(m_serialPortComboBox, static_cast<void (QComboBox::*)(const QString &)>(&QComboBox::currentIndexChanged), this, &Dialog::activateRunButton);
-    connect(m_waitRequestSpinBox, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &Dialog::activateRunButton);
+    connect(m_serialPortComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Dialog::activateRunButton);
+    connect(m_waitRequestSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &Dialog::activateRunButton);
     connect(m_responseLineEdit, &QLineEdit::textChanged, this, &Dialog::activateRunButton);
 }
 
